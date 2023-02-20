@@ -16,17 +16,7 @@ async def start(client, message):
         await db.add_user(user.id)             
     txt=f"👋 Hello Developer {user.mention} \n\nI am an Advance file Renamer and file Converter BOT with Custom thumbnail support.\n\nSend me any video or document !"
     button=InlineKeyboardMarkup([[
-        InlineKeyboardButton(" Developer ", callback_data='dev')
-        ],[
-        InlineKeyboardButton(' Updates', url='https://t.me/WebXBots'),
-        InlineKeyboardButton(' Support', url='https://t.me/Web_X_Support')
-        ],[
-        InlineKeyboardButton(' About', callback_data='about'),
-        InlineKeyboardButton(' Help', callback_data='help')
-        ],[
-        InlineKeyboardButton(" Join Our Movie Channel !", url='https://t.me/DCinemasz')
-        ],[
-        InlineKeyboardButton("❤️ Subscribe YT ❤️", url='https://www.youtube.com/@Divin_Dass')
+        InlineKeyboardButton(' JOIN', url='https://telegram.me/Anime_Vertix'),
         ]
         ])
     if START_PIC:
@@ -69,19 +59,7 @@ async def cb_handler(client, query: CallbackQuery):
     if data == "start":
         await query.message.edit_text(
             text=f"""👋 Hello Developer {query.from_user.mention} \n\nI am an Advance file Renamer and file Converter BOT with permanent and custom thumbnail support.\n\nSend me any video or document !""",
-            reply_markup=InlineKeyboardMarkup( [[
-        InlineKeyboardButton(" Developer ", callback_data='dev')
-        ],[
-        InlineKeyboardButton(' Updates', url='https://t.me/WebXBots'),
-        InlineKeyboardButton(' Support', url='https://t.me/Web_X_Support')
-        ],[
-        InlineKeyboardButton(' About', callback_data='about'),
-        InlineKeyboardButton(' Help', callback_data='help')
-        ],[
-        InlineKeyboardButton(" Join Our Movie Channel !", url='https://t.me/DCinemasz')
-        ],[
-        InlineKeyboardButton("❤️ Subscribe YT ❤️", url='https://www.youtube.com/@Divin_Dass')
-        ]
+            reply_markup=InlineKeyboardMarkup( [ InlineKeyboardButton(' JOIN', url='https://telegram.me/Anime_Vertix'),
         ]
                 )
             )
