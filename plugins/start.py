@@ -16,7 +16,15 @@ async def start(client, message):
         await db.add_user(user.id)             
     txt=f"👋 Hello Developer {user.mention} \n\nI am an Advance file Renamer and file Converter BOT with Custom thumbnail support.\n\nSend me any video or document !"
     button=InlineKeyboardMarkup([[
-        InlineKeyboardButton(' JOIN', url='https://telegram.me/Anime_Vertix')]])
+        InlineKeyboardButton(" Developer ", callback_data='dev')
+        ],[
+        InlineKeyboardButton(' Anime', url='https://t.me/Anime_Vertix'),
+        InlineKeyboardButton(' Request', url='https://t.me/RequestAnimeVertixBot')
+        ],[
+        InlineKeyboardButton(' About', callback_data='about'),
+        InlineKeyboardButton(' Help', callback_data='help')
+        ]
+        ])
     if START_PIC:
         await message.reply_photo(START_PIC, caption=txt, reply_markup=button)       
     else:
@@ -51,6 +59,63 @@ async def rename_start(client, message):
     except:
         pass
 
-
+@Client.on_callback_query()
+async def cb_handler(client, query: CallbackQuery):
+    data = query.data 
+    if data == "start":
+        await query.message.edit_text(
+            text=f"""👋 Hello Developer {query.from_user.mention} \n\nI am an Advance file Renamer and file Converter BOT with permanent and custom thumbnail support.\n\nSend me any video or document !""",
+            reply_markup=InlineKeyboardMarkup( [[
+        InlineKeyboardButton(" Developer ", callback_data='dev')
+        ],[
+        InlineKeyboardButton(' Anime', url='https://t.me/Anime_Vertix'),
+        InlineKeyboardButton(' Request', url='https://t.me/RequestAnimeVertixBot')
+        ],[
+        InlineKeyboardButton(' About', callback_data='about'),
+        InlineKeyboardButton(' Help', callback_data='help')
+        ]
+        ]
+                )
+            )
+    elif data == "help":
+        await query.message.edit_text(
+            text=mr.HELP_TXT,
+            reply_markup=InlineKeyboardMarkup( [[
+               InlineKeyboardButton(" Request ", url="https://t.me/RequestAnimeBot")
+               ],[
+               InlineKeyboardButton(" 𝙲𝙻𝙾𝚂𝙴", callback_data = "close"),
+               InlineKeyboardButton(" 𝙱𝙰𝙲𝙺", callback_data = "start")
+               ]]
+            )
+        )
+    elif data == "about":
+        await query.message.edit_text(
+            text=mr.ABOUT_TXT.format(client.mention),
+            disable_web_page_preview = True,
+            reply_markup=InlineKeyboardMarkup( [[
+                InlineKeyboardButton(" Request ", url="https://t.me/RequestAnimeBot")
+               ],[
+               InlineKeyboardButton(" 𝙲𝙻𝙾𝚂𝙴", callback_data = "close"),
+               InlineKeyboardButton(" 𝙱𝙰𝙲𝙺", callback_data = "start")
+               ]]
+            )
+        )
+    elif data == "dev":
+        await query.message.edit_text(
+            text=mr.DEV_TXT,
+            reply_markup=InlineKeyboardMarkup( [[
+                InlineKeyboardButton(" Request ", url="https://t.me/RequestAnimeBot")
+               ],[
+               InlineKeyboardButton(" 𝙲𝙻𝙾𝚂𝙴", callback_data = "close"),
+               InlineKeyboardButton(" 𝙱𝙰𝙲𝙺", callback_data = "start")
+               ]]
+            )
+        )
+    elif data == "close":
+        try:
+            await query.message.delete()
+            await query.message.reply_to_message.delete()
+        except:
+            await query.message.delete()
 
 
