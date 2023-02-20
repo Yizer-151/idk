@@ -53,58 +53,6 @@ async def rename_start(client, message):
     except:
         pass
 
-@Client.on_callback_query()
-async def cb_handler(client, query: CallbackQuery):
-    data = query.data 
-    if data == "start":
-        await query.message.edit_text(
-            text=f"""👋 Hello Developer {query.from_user.mention} \n\nI am an Advance file Renamer and file Converter BOT with permanent and custom thumbnail support.\n\nSend me any video or document !""",
-            reply_markup=InlineKeyboardMarkup( [ InlineKeyboardButton(' JOIN', url='https://telegram.me/Anime_Vertix'),
-        ]
-                )
-            )
-    elif data == "help":
-        await query.message.edit_text(
-            text=mr.HELP_TXT,
-            reply_markup=InlineKeyboardMarkup( [[
-               InlineKeyboardButton(" Join our Movie Channel ", url="https://t.me/DCinemasz")
-               ],[
-               InlineKeyboardButton(" 𝙲𝙻𝙾𝚂𝙴", callback_data = "close"),
-               InlineKeyboardButton(" 𝙱𝙰𝙲𝙺", callback_data = "start")
-               ]]
-            )
-        )
-    elif data == "about":
-        await query.message.edit_text(
-            text=mr.ABOUT_TXT.format(client.mention),
-            disable_web_page_preview = True,
-            reply_markup=InlineKeyboardMarkup( [[
-                InlineKeyboardButton(" Join our Movie Channel ", url="https://t.me/DCinemasz")
-               ],[
-               InlineKeyboardButton(" 𝙲𝙻𝙾𝚂𝙴", callback_data = "close"),
-               InlineKeyboardButton(" 𝙱𝙰𝙲𝙺", callback_data = "start")
-               ]]
-            )
-        )
-    elif data == "dev":
-        await query.message.edit_text(
-            text=mr.DEV_TXT,
-            reply_markup=InlineKeyboardMarkup( [[
-                InlineKeyboardButton(" Join our Movie Channel ", url="https://t.me/DCinemasz")
-               ],[
-               InlineKeyboardButton(" 𝙲𝙻𝙾𝚂𝙴", callback_data = "close"),
-               InlineKeyboardButton(" 𝙱𝙰𝙲𝙺", callback_data = "start")
-               ]]
-            )
-        )
-    elif data == "close":
-        try:
-            await query.message.delete()
-            await query.message.reply_to_message.delete()
-        except:
-            await query.message.delete()
-
-
 
 
 
